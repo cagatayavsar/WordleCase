@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1254"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="Library_Dynamic_Release"
+	OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+	IntermediateDirectory="$(SolutionDir)$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="2"
+		AdditionalIncludeDirectories="..\"
+		PreprocessorDefinitions="DYNAMIC_DLL"
+		RuntimeLibrary="2"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile="$(OutDir)\$(ProjectName).dll"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile="$(OutDir)\$(ProjectName).dll"
+	/>
+</VisualStudioPropertySheet>

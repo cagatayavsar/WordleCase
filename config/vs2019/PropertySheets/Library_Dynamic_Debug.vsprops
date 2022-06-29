@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1254"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="Library_Dynamic_Debug"
+	OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+	IntermediateDirectory="$(SolutionDir)$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="0"
+		AdditionalIncludeDirectories="..\"
+		PreprocessorDefinitions="DYNAMIC_DLL"
+		RuntimeLibrary="3"
+		WarningLevel="3"
+		DebugInformationFormat="4"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile="$(OutDir)\$(ProjectName)d.dll"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile="$(OutDir)\$(ProjectName)d.dll"
+		GenerateDebugInformation="true"
+	/>
+</VisualStudioPropertySheet>
