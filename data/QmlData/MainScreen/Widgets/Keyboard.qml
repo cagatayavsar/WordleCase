@@ -8,15 +8,16 @@ Item {
     height: 500
 
     property double rowSpacing: 0.01 * width
-    property double columnSpacing: 0.02 * height
+    property double columnSpacing: 0.03 * height
     property double columns: 10
     property double rows: 5
     property string word: ""
 
     Rectangle {
         width: parent.width
-        height: 0.8 * parent.height
+        height: parent.height
         anchors.bottom: parent.bottom
+        color: "transparent"
 
         Item {
             id: keyboard
