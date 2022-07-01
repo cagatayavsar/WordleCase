@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <WordleCase>
+	</WordleCase>
+  
+	<Plugins>
+	</Plugins>
+  
+	<QmlManager>
+		<Url>./QmlData/WordleCase.qml</Url>
+		<ImportPathList>
+			<size>1</size>
+			<ImportPath1>./QmlData/imports</ImportPath1>
+		</ImportPathList>
+	</QmlManager>
+  
+</Settings>

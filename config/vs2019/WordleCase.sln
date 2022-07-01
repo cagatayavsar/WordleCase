@@ -9,9 +9,52 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B228851D-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1BD41786-AF00-4ED3-9B4C-B490BF77B768}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreApplication", "..\..\src\CoreApplication\CoreApplication.vs2019.vcxproj", "{BDAF82F7-00A2-4574-8778-FA670905A31E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QmlApplication", "..\..\src\QmlApplication\QmlApplication.vs2019.vcxproj", "{6B80DEFB-4A0E-4151-B813-CDBB85778D58}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WordleCase", "..\..\src\WordleCase\WordleCase.vs2019.vcxproj", "{49541AA1-2AEE-4934-8346-4C34F3108A43}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DLL Debug|x64 = DLL Debug|x64
+		DLL Debug|x86 = DLL Debug|x86
+		DLL Release|x64 = DLL Release|x64
+		DLL Release|x86 = DLL Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Debug|x64.ActiveCfg = DLL Debug|x64
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Debug|x64.Build.0 = DLL Debug|x64
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Debug|x86.ActiveCfg = DLL Debug|Win32
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Debug|x86.Build.0 = DLL Debug|Win32
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Release|x64.ActiveCfg = DLL Release|x64
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Release|x64.Build.0 = DLL Release|x64
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Release|x86.ActiveCfg = DLL Release|Win32
+		{BDAF82F7-00A2-4574-8778-FA670905A31E}.DLL Release|x86.Build.0 = DLL Release|Win32
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Debug|x64.ActiveCfg = DLL Debug|x64
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Debug|x64.Build.0 = DLL Debug|x64
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Debug|x86.ActiveCfg = DLL Debug|Win32
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Debug|x86.Build.0 = DLL Debug|Win32
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Release|x64.ActiveCfg = DLL Release|x64
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Release|x64.Build.0 = DLL Release|x64
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Release|x86.ActiveCfg = DLL Release|Win32
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58}.DLL Release|x86.Build.0 = DLL Release|Win32
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Debug|x64.ActiveCfg = DLL Debug|x64
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Debug|x64.Build.0 = DLL Debug|x64
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Debug|x86.ActiveCfg = DLL Debug|Win32
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Debug|x86.Build.0 = DLL Debug|Win32
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Release|x64.ActiveCfg = DLL Release|x64
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Release|x64.Build.0 = DLL Release|x64
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Release|x86.ActiveCfg = DLL Release|Win32
+		{49541AA1-2AEE-4934-8346-4C34F3108A43}.DLL Release|x86.Build.0 = DLL Release|Win32
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDAF82F7-00A2-4574-8778-FA670905A31E} = {B228851D-49C4-4C8A-B2CD-2871F8A705B8}
+		{6B80DEFB-4A0E-4151-B813-CDBB85778D58} = {B228851D-49C4-4C8A-B2CD-2871F8A705B8}
+		{49541AA1-2AEE-4934-8346-4C34F3108A43} = {6C59CDB2-B4A1-4B94-9317-9CE265029182}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7E3C313-B643-4B17-A943-340D6C348A09}
