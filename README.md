@@ -32,7 +32,7 @@ Wordle Game Project
 
 ### Installation
 
-1. Go to releases page https://github.com/cagatayavsar/WordleCase.git
+1. Go to releases page [Releases](https://github.com/cagatayavsar/WordleCase/releases)
 2. Download & Install
 
 <!-- LICENSE -->
