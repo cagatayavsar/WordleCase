@@ -4,8 +4,8 @@
 #define VER_STRING(n)				#n
 #define VER_STRING2(n)				VER_STRING(n)
 
-#define VER_MAJOR					0
-#define VER_MINOR					1
+#define VER_MAJOR					1
+#define VER_MINOR					0
 #define VER_PATCH					0
 #define VER_BUILD					0
 
