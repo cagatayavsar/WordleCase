@@ -12,8 +12,47 @@ Item {
     property double columns: 10
     property double rows: 3
     property int letterCount: 5
-    property ListModel objModel
     property int currentWordIndex: 0
+
+    property ListModel objModel
+
+    property ListModel firstRowModel: ListModel {
+        ListElement {textP: 'Q'; widthP: 1; valueP: -1}
+        ListElement {textP: 'W'; widthP: 1; valueP: -1}
+        ListElement {textP: 'E'; widthP: 1; valueP: -1}
+        ListElement {textP: 'R'; widthP: 1; valueP: -1}
+        ListElement {textP: 'T'; widthP: 1; valueP: -1}
+        ListElement {textP: 'Y'; widthP: 1; valueP: -1}
+        ListElement {textP: 'U'; widthP: 1; valueP: -1}
+        ListElement {textP: 'I'; widthP: 1; valueP: -1}
+        ListElement {textP: 'O'; widthP: 1; valueP: -1}
+        ListElement {textP: 'P'; widthP: 1; valueP: -1}
+    }
+
+    property ListModel secondRowModel: ListModel {
+        ListElement {textP: ''; widthP: 0.5; valueP: -1}
+        ListElement {textP: 'A'; widthP: 1; valueP: -1}
+        ListElement {textP: 'S'; widthP: 1; valueP: -1}
+        ListElement {textP: 'D'; widthP: 1; valueP: -1}
+        ListElement {textP: 'F'; widthP: 1; valueP: -1}
+        ListElement {textP: 'G'; widthP: 1; valueP: -1}
+        ListElement {textP: 'H'; widthP: 1; valueP: -1}
+        ListElement {textP: 'J'; widthP: 1; valueP: -1}
+        ListElement {textP: 'K'; widthP: 1; valueP: -1}
+        ListElement {textP: 'L'; widthP: 1; valueP: -1}
+    }
+
+    property ListModel thirdRowModel: ListModel {
+        ListElement {textP: 'ENTER'; widthP: 1.5; valueP: -1}
+        ListElement {textP: 'Z'; widthP: 1; valueP: -1}
+        ListElement {textP: 'X'; widthP: 1; valueP: -1}
+        ListElement {textP: 'C'; widthP: 1; valueP: -1}
+        ListElement {textP: 'V'; widthP: 1; valueP: -1}
+        ListElement {textP: 'B'; widthP: 1; valueP: -1}
+        ListElement {textP: 'N'; widthP: 1; valueP: -1}
+        ListElement {textP: 'M'; widthP: 1; valueP: -1}
+        ListElement {textP: '\u2190'; widthP: 1.5; valueP: -1}
+    }
 
     Rectangle {
         width: parent.width
@@ -33,22 +72,12 @@ Item {
                     spacing: rowSpacing
 
                     Repeater{
-                        model: [
-                            {text: 'Q', width: 1},
-                            {text: 'W', width: 1},
-                            {text: 'E', width: 1},
-                            {text: 'R', width: 1},
-                            {text: 'T', width: 1},
-                            {text: 'Y', width: 1},
-                            {text: 'U', width: 1},
-                            {text: 'I', width: 1},
-                            {text: 'O', width: 1},
-                            {text: 'P', width: 1},
-                        ]
+                        model: firstRowModel
 
                         delegate: CustomButton{
-                            text: modelData.text
-                            width: modelData.width * keyboard.width / columns - rowSpacing
+                            text: textP
+                            value: valueP
+                            width: widthP * keyboard.width / columns - rowSpacing
                             height: keyboard.height / rows - columnSpacing
 
                             onClicked: root.clicked(text)
@@ -60,22 +89,12 @@ Item {
                     spacing: rowSpacing
 
                     Repeater{
-                        model: [
-                            {text: '', width: 0.5},
-                            {text: 'A', width: 1},
-                            {text: 'S', width: 1},
-                            {text: 'D', width: 1},
-                            {text: 'F', width: 1},
-                            {text: 'G', width: 1},
-                            {text: 'H', width: 1},
-                            {text: 'J', width: 1},
-                            {text: 'K', width: 1},
-                            {text: 'L', width: 1},
-                        ]
+                        model: secondRowModel
 
                         delegate: CustomButton{
-                            text: modelData.text
-                            width: modelData.width * keyboard.width / columns - rowSpacing
+                            text: textP
+                            value: valueP
+                            width: widthP * keyboard.width / columns - rowSpacing
                             height: keyboard.height / rows - columnSpacing
 
                             onClicked: root.clicked(text)
@@ -87,21 +106,12 @@ Item {
                     spacing: rowSpacing
 
                     Repeater{
-                        model: [
-                            {text: 'ENTER', width: 1.5},
-                            {text: 'Z', width: 1},
-                            {text: 'X', width: 1},
-                            {text: 'C', width: 1},
-                            {text: 'V', width: 1},
-                            {text: 'B', width: 1},
-                            {text: 'N', width: 1},
-                            {text: 'M', width: 1},
-                            {text: '\u2190', width: 1.5},
-                        ]
+                        model: thirdRowModel
 
                         delegate: CustomButton{
-                            text: modelData.text
-                            width: modelData.width * keyboard.width / columns - rowSpacing
+                            text: textP
+                            value: valueP
+                            width: widthP * keyboard.width / columns - rowSpacing
                             height: keyboard.height / rows - columnSpacing
 
                             onClicked: root.clicked(text)
@@ -130,7 +140,7 @@ Item {
             {
                 var str = WordleChecker.compare(obj.wordTextP)
                 obj.valuesP = str;
-
+                updateKeyboard(str, obj.wordTextP)
                 currentWordIndex++
             }
             else
@@ -143,6 +153,33 @@ Item {
             if (length < letterCount)
             {
                 obj.wordTextP = obj.wordTextP + text
+            }
+        }
+    }
+
+    function updateKeyboard(str, word){
+        var length = str.length
+
+        for (var i = 0; i < length; i++) {
+
+            iterate(firstRowModel, str[i], word[i])
+            iterate(secondRowModel, str[i], word[i])
+            iterate(thirdRowModel, str[i], word[i])
+        }
+    }
+
+    function iterate(model, value, word)
+    {
+        for (var i = 0; i < model.count; i++)
+        {
+            var obj = model.get(i)
+
+            if (obj.textP === word)
+            {
+                if (obj.valueP !== 2)
+                {
+                    obj.valueP = parseInt(value)
+                }
             }
         }
     }

@@ -17,8 +17,6 @@ Rectangle {
     Keyboard
     {
         id: keyboard
-        x: 350
-        y: 500
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 20

@@ -25,23 +25,21 @@ Label{
         implicitHeight: 30
 
         color: {
+            var color = Constants.itemBackgroundColor
             if(value === 0)
             {
-                Constants.darkGrayColor
+                color = Constants.darkGrayColor
             }
             else if (value === 1)
             {
-                Constants.yellowColor
+                color = Constants.yellowColor
             }
             else if (value === 2)
             {
-                Constants.greenColor
-            }
-            else
-            {
-                Constants.itemBackgroundColor
+                color = Constants.greenColor
             }
 
+            return color
         }
 
         border.width: 1

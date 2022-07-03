@@ -11,6 +11,8 @@ Button {
     implicitHeight: Math.max(defaultBackground.implicitHeight,
                              defaultContentItem.implicitHeight + padding * 2)
 
+    property int value: -1
+
     opacity: control.text === '' ? 0 : 1
 
     font.family: Constants.buttonFont
@@ -33,13 +35,30 @@ Button {
 
         implicitWidth: 30
         implicitHeight: 20
-        color: pressed ? Constants.interactiveItemBackgroundDarkColor : Constants.interactiveItemBackgroundColor
+        color: {
+            var color = Constants.itemBackgroundColor
+            var pressedColor = Constants.interactiveItemBackgroundDarkColor
+
+            if(value === 0)
+            {
+                color = Constants.darkGrayColor
+                pressedColor = Constants.darkGrayColorPressed
+            }
+            else if (value === 1)
+            {
+                color = Constants.yellowColor
+                pressedColor = Constants.yellowColorPressed
+            }
+            else if (value === 2)
+            {
+                color = Constants.greenColor
+                pressedColor = Constants.greenColorPressed
+            }
+
+            return pressed ? pressedColor : color
+        }
         radius: 5
-        border.width: 1
+        border.width: hovered ? 3 : 1
         border.color: hovered ? Constants.itemBorderHoveredColor : Constants.interactiveItemBorderColor
     }
-
-    onClicked: {
-    }
-
 }

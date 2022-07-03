@@ -10,8 +10,7 @@ Item{
 
     property double rowSpacing: 0.01 * width
     property double rows: 5
-    property alias wordText: root.wordTextStr
-    property string wordTextStr:""
+    property string wordText: ""
     property string values: ""
 
     //letter array
@@ -50,6 +49,7 @@ Item{
 
     onWordTextChanged: {
         var length = wordText.length
+
         for (var i = 0; i < rows; i++){
             var obj = letterModel.get(i)
 
