@@ -26,18 +26,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\DLL Release\moc_CsQmlManager.cpp">
-      <Filter>Generated Files\DLL Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\DLL Debug\moc_CsQmlManager.cpp">
-      <Filter>Generated Files\DLL Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\DLL Release\moc_CsQmlApplication.cpp">
-      <Filter>Generated Files\DLL Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\DLL Debug\moc_CsQmlApplication.cpp">
-      <Filter>Generated Files\DLL Debug</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\DLL Release\moc_QmlApplication.cpp">
       <Filter>Generated Files\DLL Release</Filter>
     </ClCompile>

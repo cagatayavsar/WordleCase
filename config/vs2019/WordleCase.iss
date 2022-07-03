@@ -1,61 +1,73 @@
-#define QTDIR "C:\Qt\5.15.1\msvc2019_64"
+#define QTDIR "C:\Qt\5.15.2\msvc2019_64"
 
-#define CoinTrader_OutDir "..\vs2019\x64\DLL Release"
-#define CoinTrader_Version GetFileVersion('..\vs2019\x64\DLL Release\CoinTrader.exe')
+#define WordleCase_OutDir "..\vs2019\x64\DLL Release"
+#define WordleCase_Version GetFileVersion('..\vs2019\x64\DLL Release\WordleCase.exe')
 
 [Setup]
-AppName=CoinTrader
-AppVersion={#CoinTrader_Version}
-DefaultDirName={pf}\CoinTrader\
-DefaultGroupName=CoinTrader
+AppName=WordleCase
+AppVersion={#WordleCase_Version}
+DefaultDirName={pf}\WordleCase\
+DefaultGroupName=WordleCase
 UninstallDisplayIcon={app}\uninstall.exe
 Compression=lzma2
 SolidCompression=yes
-OutputDir=userdocs:CoinTrader Setup
-OutputBaseFilename=CoinTrader Setup v{#CoinTrader_Version}
+OutputDir=userdocs:WordleCase Setup
+OutputBaseFilename=WordleCase Setup v{#WordleCase_Version}
 
 [Files]
 ; Exe Files
-Source: "{#CoinTrader_OutDir}\CoinTrader.exe"; DestDir: "{app}";
+Source: "{#WordleCase_OutDir}\WordleCase.exe"; DestDir: "{app}";
 
 ; Visual C++ Redistributable Package Files
 Source: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Redist\MSVC\14.29.30133\vc_redist.x64.exe"; DestDir: {app}; Flags: deleteafterinstall
 
 ; Config Files
-Source: "{#CoinTrader_OutDir}\CoinTrader.xml"; DestDir: "{app}"
+Source: "{#WordleCase_OutDir}\WordleCase.xml"; DestDir: "{app}"
 
 ;Application Libraries
-Source: "{#CoinTrader_OutDir}\Application.dll"; DestDir: "{app}"
-Source: "{#CoinTrader_OutDir}\CoreApplication.dll"; DestDir: "{app}"
-Source: "{#CoinTrader_OutDir}\BinanceClient.dll"; DestDir: "{app}"
+Source: "{#WordleCase_OutDir}\CoreApplication.dll"; DestDir: "{app}"
+Source: "{#WordleCase_OutDir}\QmlApplication.dll"; DestDir: "{app}"
 
 ;Plugins
-Source: "{#CoinTrader_OutDir}\NotificationPlugin.dll"; DestDir: "{app}"
-Source: "{#CoinTrader_OutDir}\SamplePlugin.dll"; DestDir: "{app}"
-Source: "{#CoinTrader_OutDir}\SpotOverviewPlugin.dll"; DestDir: "{app}"
-Source: "{#CoinTrader_OutDir}\TrendFinderPlugin.dll"; DestDir: "{app}"
+Source: "{#WordleCase_OutDir}\WordleCheckPlugin.dll"; DestDir: "{app}"
 
 ; Qt DLLs
 Source: "{#QTDIR}\bin\Qt5Core.dll"; DestDir: "{app}"
 Source: "{#QTDIR}\bin\Qt5Gui.dll"; DestDir: "{app}"
-Source: "{#QTDIR}\bin\Qt5Widgets.dll"; DestDir: "{app}"
 Source: "{#QTDIR}\bin\Qt5Network.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5Widgets.dll"; DestDir: "{app}"
 Source: "{#QTDIR}\bin\Qt5Xml.dll"; DestDir: "{app}"
+
+Source: "{#QTDIR}\bin\Qt5Qml.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QmlModels.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QmlWorkerScript.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5Quick.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QuickControls2.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QuickShapes.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QuickTemplates2.dll"; DestDir: "{app}"
+Source: "{#QTDIR}\bin\Qt5QuickWidgets.dll"; DestDir: "{app}"
+
 Source: "{#QTDIR}\plugins\platforms\qminimal.dll"; DestDir: "{app}\platforms"
 Source: "{#QTDIR}\plugins\platforms\qoffscreen.dll"; DestDir: "{app}\platforms"
 Source: "{#QTDIR}\plugins\platforms\qwindows.dll"; DestDir: "{app}\platforms"
 Source: "{#QTDIR}\plugins\styles\qwindowsvistastyle.dll"; DestDir: "{app}\styles"
 
-; Data Files
-Source: "..\..\data\transactions\*"; DestDir: "{app}\transactions"; Flags: ignoreversion recursesubdirs
+; Qml Dependencies
+Source: "{#QTDIR}\qml\QtQuick.2\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtQuick.2"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\QtQuick\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtQuick"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\Qt\labs\folderlistmodel\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\Qt\labs\folderlistmodel"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\Qt\labs\settings\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\Qt\labs\settings"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\QtGraphicalEffects\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtGraphicalEffects"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\QtMultimedia\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtMultimedia"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\QtPositioning\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtPositioning"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\QtQml\Models.2\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\QtQml\Models.2"; Flags: recursesubdirs
+Source: "{#QTDIR}\qml\Qt3D\*"; Excludes: "*d.dll,*.pdb"; DestDir: "{app}\Qt3D"; Flags: recursesubdirs
 
-; Icon Files
-Source: "..\..\src\CoinTrader\CoinTrader.ico"; DestDir: "{app}"
-Source: "..\..\data\icons\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+; Data Files
+Source: "..\..\data\QmlData\*"; DestDir: "{app}\QmlData"; Flags: recursesubdirs
 
 [Icons]
-Name: "{group}\CoinTrader"; Filename: "{app}\CoinTrader.exe"
-Name: "{commondesktop}\CoinTrader"; Filename: "{app}\CoinTrader.exe"; Parameters: ""; IconFilename: "{app}\CoinTrader.ico"
+Name: "{commondesktop}\WordleCase"; Filename: "{app}\WordleCase.exe"; Parameters: "";
 
 [Code]
 procedure AfterInstallMessage();

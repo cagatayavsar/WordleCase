@@ -1,8 +1,6 @@
 #include <WordleCheckPlugin/WordleCheckPlugin.h>
 #include <WordleCheckPlugin/WordleChecker.h>
 
-#include <QtQml/QtQml>
-
 WordleCheckPlugin::WordleCheckPlugin()
 {
 	mWordleChecker = new WordleChecker();

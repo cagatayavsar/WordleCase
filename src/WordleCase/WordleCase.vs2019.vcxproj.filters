@@ -24,8 +24,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="WordleCase.xml">
+    <CopyFileToFolders Include="WordleCase.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WordleCase.rc">
       <Filter>Resource Files</Filter>
-    </None>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
