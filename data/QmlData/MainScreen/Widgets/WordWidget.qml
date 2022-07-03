@@ -11,9 +11,11 @@ Item{
     property double rowSpacing: 0.01 * width
     property double rows: 5
     property alias wordText: root.wordTextStr
+    property string wordTextStr:""
+    property string values: ""
 
-    property string wordTextStr: ""
-    property ListModel objModel: ListModel{}
+    //letter array
+    property ListModel letterModel: ListModel{}
 
     Rectangle {
         width: parent.width
@@ -29,10 +31,11 @@ Item{
                 spacing: rowSpacing
 
                 Repeater{
-                    model: objModel
+                    model: letterModel
 
                     delegate: CustomLabel{
                         text: modelText
+                        value: valueP
                     }
                 }
             }
@@ -41,14 +44,14 @@ Item{
 
     Component.onCompleted: {
         for (var i = 0; i < rows; i++) {
-            objModel.append({"modelText":'', "value":0})
+            letterModel.append({"modelText":'', "valueP":-1})
         }
     }
 
     onWordTextChanged: {
         var length = wordText.length
         for (var i = 0; i < rows; i++){
-            var obj = objModel.get(i)
+            var obj = letterModel.get(i)
 
             if (i < length)
             {
@@ -58,6 +61,16 @@ Item{
             {
                 obj.modelText = ''
             }
+        }
+    }
+
+    onValuesChanged: {
+        var length = values.length
+
+        for (var i = 0; i < length; i++){
+            var obj = letterModel.get(i)
+
+            obj.valueP = parseInt(values.charAt(i))
         }
     }
 }

@@ -4,6 +4,9 @@
 	</WordleCase>
   
 	<Plugins>
+    <WordleCheckPlugin>
+      <Load>true</Load>
+    </WordleCheckPlugin>
 	</Plugins>
   
 	<QmlManager>

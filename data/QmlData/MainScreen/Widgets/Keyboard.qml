@@ -10,8 +10,10 @@ Item {
     property double rowSpacing: 0.01 * width
     property double columnSpacing: 0.03 * height
     property double columns: 10
-    property double rows: 5
-    property string word: ""
+    property double rows: 3
+    property int letterCount: 5
+    property ListModel objModel
+    property int currentWordIndex: 0
 
     Rectangle {
         width: parent.width
@@ -112,27 +114,39 @@ Item {
 
     signal clicked(string text)
     onClicked: {
-        var length = word.length
+        var obj = objModel.get(currentWordIndex)
+        var length = obj.wordTextP.length
 
-        if (text == '\u2190')
+        if (text === '\u2190')
         {
             if (length > 0)
             {
-                word = word.substring(0, length-1)
+                obj.wordTextP = obj.wordTextP.substring(0, length-1)
             }
         }
-        else if (text == "ENTER")
+        else if (text === "ENTER")
         {
+            if (length === letterCount)
+            {
+                var str = WordleChecker.compare(obj.wordTextP)
 
+                obj.valuesP = str;
+
+                currentWordIndex++
+            }
+            else
+            {
+                console.log("Yetersiz harf!");
+            }
         }
         else
         {
-            if (length < 5)
+            if (length < letterCount)
             {
-                word = word + text
+                obj.wordTextP = obj.wordTextP + text
             }
         }
 
-        console.log(word)
+        console.log("length: ", length, " word: ", obj.wordTextP)
     }
 }
