@@ -5,7 +5,7 @@ import WordleCase 1.0
 Item {
     id: root
     width: 700
-    height: 500
+    height: 300
 
     property double rowSpacing: 0.01 * width
     property double columnSpacing: 0.03 * height
@@ -29,7 +29,7 @@ Item {
             Column{
                 spacing: columnSpacing
 
-                Row{ //Q W E R T Y U I O P
+                Row{
                     spacing: rowSpacing
 
                     Repeater{
@@ -56,7 +56,7 @@ Item {
                     }
                 }
 
-                Row{ //A S D F G H J K L
+                Row{
                     spacing: rowSpacing
 
                     Repeater{
@@ -83,7 +83,7 @@ Item {
                     }
                 }
 
-                Row{ //A S D F G H J K L
+                Row{
                     spacing: rowSpacing
 
                     Repeater{
@@ -129,14 +129,13 @@ Item {
             if (length === letterCount)
             {
                 var str = WordleChecker.compare(obj.wordTextP)
-
                 obj.valuesP = str;
 
                 currentWordIndex++
             }
             else
             {
-                console.log("Yetersiz harf!");
+                console.log("Not Enough Letters!");
             }
         }
         else
@@ -146,7 +145,5 @@ Item {
                 obj.wordTextP = obj.wordTextP + text
             }
         }
-
-        console.log("length: ", length, " word: ", obj.wordTextP)
     }
 }

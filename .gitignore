@@ -47,6 +47,7 @@ ui_*.h
 # QtCreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+*.qtds
 
 # Visual Studio
 *.user

@@ -6,8 +6,8 @@ Item {
 
     implicitWidth: Constants.width
     implicitHeight: Constants.height
+
     property ListModel objModel: ListModel{}
-    property int currentIndex: 0
     property int columnCount: 6
 
     Column{
@@ -17,6 +17,7 @@ Item {
         anchors.topMargin: 100
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
+
         Repeater{
             model: objModel
 
@@ -31,9 +32,5 @@ Item {
         for (var i = 0; i < columnCount; i++) {
             objModel.append({"wordTextP":"", "valuesP":""})
         }
-    }
-
-    onObjModelChanged: {
-
     }
 }

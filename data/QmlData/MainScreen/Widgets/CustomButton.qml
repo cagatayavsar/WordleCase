@@ -5,13 +5,6 @@ import WordleCase 1.0
 Button {
     id: control
 
-    readonly property alias mDefaultContentItem: defaultContentItem
-    readonly property alias mDefaultBackground: defaultBackground
-
-    property color mTextColorNormal: Constants.buttonTextColor
-    property color mBorderColorNormal: Constants.interactiveItemBorderColor
-    property color mBackgroundColorNormal: Constants.interactiveItemBackgroundColor
-
     implicitWidth: Math.max(defaultBackground.implicitWidth,
                             defaultContentItem.implicitWidth + padding * 2)
 
@@ -21,7 +14,7 @@ Button {
     opacity: control.text === '' ? 0 : 1
 
     font.family: Constants.buttonFont
-    font.pixelSize: 16
+    font.pixelSize: Constants.buttonPixelSize
 
     contentItem: Text {
         id: defaultContentItem
@@ -32,7 +25,7 @@ Button {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 
-        color: mTextColorNormal
+        color: hovered ? Constants.itemBorderHoveredColor : Constants.buttonTextColor
     }
 
     background: Rectangle {
@@ -40,14 +33,13 @@ Button {
 
         implicitWidth: 30
         implicitHeight: 20
-        color: mBackgroundColorNormal
+        color: pressed ? Constants.interactiveItemBackgroundDarkColor : Constants.interactiveItemBackgroundColor
         radius: 5
         border.width: 1
-        border.color: mBorderColorNormal
+        border.color: hovered ? Constants.itemBorderHoveredColor : Constants.interactiveItemBorderColor
     }
 
     onClicked: {
-        //console.log(Qt.fontFamilies())
     }
 
 }

@@ -5,8 +5,6 @@ import WordleCase 1.0
 Label{
     id: control
 
-    readonly property alias mDefaultBackground: defaultBackground
-
     property int value: -1
 
     width: 50
@@ -16,7 +14,8 @@ Label{
 
     color: Constants.buttonTextColor
 
-    font.pixelSize: 14
+    font.pixelSize: Constants.labelPixelSize
+    font.bold: true
     font.family: Constants.buttonFont
 
     background: Rectangle{
@@ -28,15 +27,15 @@ Label{
         color: {
             if(value === 0)
             {
-                "#3a3a3c"
+                Constants.darkGrayColor
             }
             else if (value === 1)
             {
-                "#b59F3b"
+                Constants.yellowColor
             }
             else if (value === 2)
             {
-                "#538d4e"
+                Constants.greenColor
             }
             else
             {
