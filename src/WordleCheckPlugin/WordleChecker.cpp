@@ -4,8 +4,10 @@
 
 #include <QtQml/QQmlContext>
 
+#include <QtCore/QSettings>
+
 WordleChecker::WordleChecker(QObject* parent)
-	: mSecretWord("ASDFG")
+	: mSecretWord("")
 {
 }
 
@@ -19,37 +21,68 @@ void WordleChecker::initialize()
 		"BeforeQmlContextCreatedEvent",
 		this,
 		SLOT(onBeforeQmlContextCreated(QQmlContext*)));
+
+	QSettings settings;
+	settings.beginGroup("WordleCase");
+
+	if (QSettings::NoError == settings.status())
+	{
+		QStringList list = settings.childKeys();
+		foreach(QString optionName, list)
+		{
+			if (optionName == QString("SecretWord"))
+			{
+				mSecretWord = settings.value(optionName).toString();
+			}
+		}
+	}
 }
 
 QString WordleChecker::compare(QString word)
 {
 	//0 - default, 1 - yellow, 2 - green
-	//başta direkt yerinde var mı diye bak ilk arraydan o stringi sil ya da yerine saçma bir şey yaz.
+	QString tempStr = mSecretWord;
 
-	QString result;
+	const int length = word.length();
+	bool allTrue = true;
 
-	for (int i = 0; i < word.length(); i++)
+	for (int i = 0; i < length; i++)
 	{
-		const QChar ch = word.at(i);
-
-		if (mSecretWord.contains(ch))
-		{ 
-			if (ch == mSecretWord.at(i))
-			{
-				result.append('2');
-			}
-			else
-			{
-				result.append('1');
-			}
+		if (mSecretWord.at(i) == word.at(i))
+		{
+			tempStr.replace(i, 1, '2');
+			word.replace(i, 1, '2');
 		}
 		else
 		{
-			result.append('0');
+			allTrue = false;
 		}
 	}
 
-	return result;
+	if (!allTrue)
+	{
+		for (int i = 0; i < length; i++)
+		{
+			const QChar ch = word.at(i);
+
+			if (ch != '2')
+			{
+				const int foundIndex = tempStr.indexOf(ch);
+
+				if (-1 != foundIndex)
+				{
+					tempStr.replace(foundIndex, 1, '1');
+					word.replace(i, 1, '1');
+				}
+				else
+				{
+					word.replace(i, 1, '0');
+				}
+			}
+		}
+	}
+
+	return word;
 }
 
 void WordleChecker::onBeforeQmlContextCreated(QQmlContext* context)

@@ -27,7 +27,6 @@ public slots:
 private:
 
 	QString mSecretWord;
-
 };
 
 #endif
